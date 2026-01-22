@@ -4,72 +4,119 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Black Bull</title>
-<link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Rambla&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Rambla&display=swap" rel="stylesheet">
+
+  <!-- TAILWIND CDN (OBLIGATORIO) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tu CSS propio -->
   <link rel="stylesheet" href="css/base.css">
 </head>
-
-
 <body>
 
 
 
 
-<!-- Mobile Header -->
-<header class="mobile-header">
-  <button class="hamburger" aria-label="Abrir menú">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-  <div class="mobile-logo">
-    <img src="assets/images/hero/blackbullLOGOMOBILE.png" alt="Black Bull">
-  </div>
-</header>
+<div class="fixed top-0 left-0 right-0 z-[600] lg:hidden">
 
-<!-- Mobile Sidebar -->
-<nav class="mobile-sidebar">
-  
-  <a href="#">INICIO</a>
-  <a href="#">MENU</a>
-  <a href="#">QUINES SOMOS</a>
-  <a href="#">GALERIA</a>
-  <a href="#">CONTACTO</a>
-  <div class="mobile-reservas">
-    <span>RESERVAS</span>
-    <strong>+54 383 XXX XXXX</strong>
-  </div>
-</nav>
+  <header class="relative h-16 bg-black flex items-center px-4">
+
+    <!-- HAMBURGER -->
+    <label class="flex flex-col gap-2 w-8 cursor-pointer">
+
+      <input type="checkbox" class="peer hidden" />
+
+      <span
+        class="h-[3px] w-1/2 bg-white rounded-full
+               transition-transform duration-500 origin-right
+               peer-checked:rotate-[225deg]
+               peer-checked:-translate-x-[12px]
+               peer-checked:-translate-y-[1px]">
+      </span>
+
+      <span
+        class="h-[3px] w-full bg-white rounded-full
+               transition-transform duration-500
+               peer-checked:-rotate-45">
+      </span>
+
+      <span
+        class="h-[3px] w-1/2 bg-white rounded-full self-end
+               transition-transform duration-500 origin-left
+               peer-checked:rotate-[225deg]
+               peer-checked:translate-x-[12px]
+               peer-checked:translate-y-[1px]">
+      </span>
+
+    </label>
+
+    <!-- LOGO -->
+    <div class="absolute left-1/2 -translate-x-1/2">
+      <img src="assets/images/hero/blackbullLOGOMOBILE.png" class="h-20" />
+    </div>
+
+  </header>
+
+  <!-- SIDEBAR -->
+<nav
+  id="mobile-menu"
+  class="fixed top-16 left-0 h-[calc(100vh-4rem)]
+         w-[70%] max-w-xs bg-black text-white
+         -translate-x-full
+         transition-transform duration-500
+         ease-[cubic-bezier(.77,0,.18,1)]
+         p-8"
+>
+
+    <a class="block mb-6 text-xl font-['Pirata_One'] tracking-widest">INICIO</a>
+    <a class="block mb-6 text-xl font-['Pirata_One'] tracking-widest">MENÚ</a>
+    <a class="block mb-6 text-xl font-['Pirata_One'] tracking-widest">NOSOTROS</a>
+    <a class="block mb-6 text-xl font-['Pirata_One'] tracking-widest">CONTACTO</a>
 
 
-<!-- SIDEBAR -->
-<aside class="sidebar">
 
-  <div class="logo">
-    <img src="assets/images/hero/BLACKBULLLOGO.png" alt="Black Bull Logo">
-    <span class="logo-tagline">
-    <span class="tagline-top">SABOR</span>
-    <span class="tagline-bottom">ARGENTINO</span>
+
+<div class="mt-10 pt-6 border-t border-white/10">
+  <span
+    class="block text-xs tracking-[0.4em] text-gray-400 mb-2 uppercase"
+  >
+    Reservas
   </span>
-  </div>
 
-  <nav class="menu">
-    <a href="#">Inicio</a>
-    <a href="#">Menu</a>
-    <a href="#">Quienes somos</a>
-    <a href="#">Galleria</a>
-    <a href="#">Contacto</a>
+  <a
+    href="https://wa.me/5493835774444"
+    target="_blank"
+    class="block text-xl font-['Pirata_One'] tracking-widest
+           text-[#b32020]
+           transition-colors duration-300
+           hover:text-[#25D366]"
+  >
+    +54 383 577 4444
+  </a>
+</div>
+
+
+
+
   </nav>
 
-  <div class="reservation">
-    <span>Reservas</span>
-    <strong>+54 383 XXX XXXX</strong>
-  </div>
 
-</aside>
 
+
+
+
+
+
+
+
+
+
+
+  
+</div>
 
 
 
@@ -185,140 +232,93 @@
 
 
 
-<section class="menu-section">
+<section class="menu-section" id="menu">
 
   <!-- HEADER -->
-  <header class="menu-header">
-    <span class="menu-eyebrow">STEAK & WINE</span>
-    <h2 class="menu-title">OUR MENU</h2>
-  </header>
+<header class="menu-header">
+  <span class="menu-eyebrow">SABORES QUE REPRESENTAN</span>
+  <h2 class="menu-title">NUESTRO MENÚ</h2>
+</header>
+
 
   <!-- CATEGORIES -->
-  <div class="menu-categories-wrapper">
+  <nav class="menu-categories">
 
-    <!-- Flecha izquierda (después animamos) -->
-    <button class="menu-arrow menu-arrow-left" aria-label="Anterior">
-      ‹
+    <button class="menu-category active" data-category="starters">
+      <img src="assets/icons/starter.svg" alt="">
+      <span>Starters</span>
     </button>
 
-    <!-- Contenedor de categorías -->
-    <div class="menu-categories">
-
-      <!-- CATEGORY -->
-      <button class="menu-category is-active" data-category="mains">
-        <div class="menu-category-icon">
-          <!-- ICONO ACÁ -->
-        </div>
-        <span class="menu-category-label">Mains</span>
-      </button>
-
-      <button class="menu-category" data-category="salads">
-        <div class="menu-category-icon">
-          <!-- ICONO ACÁ -->
-        </div>
-        <span class="menu-category-label">Salads</span>
-      </button>
-
-      <button class="menu-category" data-category="wine">
-        <div class="menu-category-icon">
-          <!-- ICONO ACÁ -->
-        </div>
-        <span class="menu-category-label">Wine</span>
-      </button>
-
-      <button class="menu-category" data-category="breakfast">
-        <div class="menu-category-icon">
-          <!-- ICONO ACÁ -->
-        </div>
-        <span class="menu-category-label">Breakfast</span>
-      </button>
-
-      <button class="menu-category" data-category="dessert">
-        <div class="menu-category-icon">
-          <!-- ICONO ACÁ -->
-        </div>
-        <span class="menu-category-label">Dessert</span>
-      </button>
-
-    </div>
-
-    <!-- Flecha derecha (después animamos) -->
-    <button class="menu-arrow menu-arrow-right" aria-label="Siguiente">
-      ›
+    <button class="menu-category" data-category="mains">
+      <img src="assets/icons/cow.svg" alt="">
+      <span>Mains</span>
     </button>
 
-  </div>
+    <button class="menu-category" data-category="wine">
+      <img src="assets/icons/wine.svg" alt="">
+      <span>Wine</span>
+    </button>
+
+    <button class="menu-category" data-category="dessert">
+      <img src="assets/icons/dessert.svg" alt="">
+      <span>Dessert</span>
+    </button>
+
+  </nav>
 
   <!-- MENU CONTENT -->
   <div class="menu-content">
 
-    <!-- COLUMNA IZQUIERDA -->
-<div class="menu-column menu-column-left">
-
-  <article class="menu-item">
-    <div class="menu-item-row">
-      <h4 class="menu-item-title">Mozzarella Dippers</h4>
-      <span class="menu-item-dots"></span>
-      <span class="menu-item-price">27$</span>
-    </div>
-    <p class="menu-item-description">
-      Fried mozzarella sticks, marinara sauce
-    </p>
-  </article>
-
-  <article class="menu-item">
-    <div class="menu-item-row">
-      <h4 class="menu-item-title">Onion Rings</h4>
-      <span class="menu-item-dots"></span>
-      <span class="menu-item-price">32$</span>
-    </div>
-    <p class="menu-item-description">
-      Fried onion rings, smoked aioli
-    </p>
-  </article>
-  <article class="menu-item">
-    <div class="menu-item-row">
-      <h4 class="menu-item-title">Mozzarella Dippers</h4>
-      <span class="menu-item-dots"></span>
-      <span class="menu-item-price">27$</span>
-    </div>
-    <p class="menu-item-description">
-      Fried mozzarella sticks, marinara sauce
-    </p>
-  </article>
-
-  <article class="menu-item">
-    <div class="menu-item-row">
-      <h4 class="menu-item-title">Onion Rings</h4>
-      <span class="menu-item-dots"></span>
-      <span class="menu-item-price">32$</span>
-    </div>
-    <p class="menu-item-description">
-      Fried onion rings, smoked aioli
-    </p>
-  </article>
-</div>
-
-
-    <!-- COLUMNA DERECHA -->
-    <div class="menu-column menu-column-right">
+    <!-- STARTERS -->
+    <div class="menu-panel active" data-category="starters">
 
       <article class="menu-item">
-        <h4 class="menu-item-title">Menu item title</h4>
-        <p class="menu-item-description">
-          Description of the dish goes here
-        </p>
-        <span class="menu-item-price">$00</span>
+        <div class="menu-item-row">
+          <h4>Mozzarella Dippers</h4>
+          <span class="price">$27</span>
+        </div>
+        <p>Fried mozzarella sticks, marinara sauce</p>
       </article>
 
       <article class="menu-item">
-        <h4 class="menu-item-title">Menu item title</h4>
-        <p class="menu-item-description">
-          Description of the dish goes here
-        </p>
-        <span class="menu-item-price">$00</span>
+        <div class="menu-item-row">
+          <h4>Onion Rings</h4>
+          <span class="price">$32</span>
+        </div>
+        <p>Fried onion rings, smoked aioli</p>
       </article>
 
+    </div>
+
+    <!-- MAINS -->
+    <div class="menu-panel" data-category="mains">
+
+      <article class="menu-item">
+        <div class="menu-item-row">
+          <h4>Buffalo Wings</h4>
+          <span class="price">$37</span>
+        </div>
+        <p>Spicy chicken wings, blue cheese sauce</p>
+      </article>
+
+      <article class="menu-item">
+        <div class="menu-item-row">
+          <h4>Chili con Carne</h4>
+          <span class="price">$32</span>
+        </div>
+        <p>Ground beef, beans, spices</p>
+      </article>
+
+    </div>
+
+    <!-- WINE -->
+    <div class="menu-panel" data-category="wine">
+      <p class="menu-empty">Wine menu coming soon</p>
+    </div>
+
+    <!-- DESSERT -->
+    <div class="menu-panel" data-category="dessert">
+      <p class="menu-empty">Desserts coming soon</p>
     </div>
 
   </div>
@@ -336,6 +336,8 @@
 
 
 
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
 <script src="js/animations.js"></script>
+
 
 </body>

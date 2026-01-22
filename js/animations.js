@@ -59,28 +59,41 @@ function handleDrag(diff) {
     goToSlide(index + 1);
   }
 }
-const hamburger = document.querySelector('.hamburger');
-const mobileSidebar = document.querySelector('.mobile-sidebar');
-const mobileLinks = document.querySelectorAll('.mobile-sidebar a');
 
-if (hamburger && mobileSidebar) {
-  hamburger.addEventListener('click', () => {
-    const isOpen = hamburger.classList.contains('open');
 
-    if (isOpen) {
-      hamburger.classList.remove('open');
-      mobileSidebar.classList.remove('open');
-    } else {
-      hamburger.classList.add('open');
-      mobileSidebar.classList.add('open');
-    }
-  });
-}
+/* =========================
+   MENU CATEGORIES (MOBILE)
+========================= */
 
-mobileLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('open');
-    mobileSidebar.classList.remove('open');
+const menuCategories = document.querySelectorAll('.menu-category');
+const menuPanels = document.querySelectorAll('.menu-panel');
+
+menuCategories.forEach(category => {
+  category.addEventListener('click', () => {
+    const target = category.dataset.category;
+
+    // active category
+    menuCategories.forEach(c => c.classList.remove('active'));
+    category.classList.add('active');
+
+    // show panel
+    menuPanels.forEach(panel => {
+      panel.classList.toggle(
+        'active',
+        panel.dataset.category === target
+      );
+    });
   });
 });
+const hamburgerCheckbox = document.querySelector(
+  'header input[type="checkbox"]'
+);
+const mobileMenu = document.getElementById('mobile-menu');
 
+hamburgerCheckbox.addEventListener('change', () => {
+  if (hamburgerCheckbox.checked) {
+    mobileMenu.classList.remove('-translate-x-full');
+  } else {
+    mobileMenu.classList.add('-translate-x-full');
+  }
+});
