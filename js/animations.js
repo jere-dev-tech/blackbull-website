@@ -97,3 +97,52 @@ hamburgerCheckbox.addEventListener('change', () => {
     mobileMenu.classList.add('-translate-x-full');
   }
 });
+
+
+
+const checkbox = document.getElementById('menu-checkbox');
+const menu = document.getElementById('mobile-menu');
+
+/* abrir / cerrar */
+checkbox.addEventListener('change', () => {
+  if (checkbox.checked) {
+    menu.classList.remove('-translate-x-full');
+    menu.classList.add('translate-x-0');
+  } else {
+    menu.classList.add('-translate-x-full');
+    menu.classList.remove('translate-x-0');
+  }
+});
+
+/* click afuera */
+document.addEventListener('click', (e) => {
+  if (!checkbox.checked) return;
+
+  if (!menu.contains(e.target) && !e.target.closest('#hamburger')) {
+    checkbox.checked = false;
+    menu.classList.add('-translate-x-full');
+    menu.classList.remove('translate-x-0');
+  }
+});
+
+/* scroll hacia abajo */
+let lastScroll = window.scrollY;
+window.addEventListener('scroll', () => {
+  if (!checkbox.checked) return;
+
+  if (window.scrollY > lastScroll + 10) {
+    checkbox.checked = false;
+    menu.classList.add('-translate-x-full');
+    menu.classList.remove('translate-x-0');
+  }
+  lastScroll = window.scrollY;
+});
+
+
+
+
+
+
+
+
+

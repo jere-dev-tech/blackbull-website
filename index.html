@@ -20,38 +20,37 @@
 
 
 
-<div class="fixed top-0 left-0 right-0 z-[600] lg:hidden">
 
+<!-- MOBILE NAV -->
+<div class="mobile-nav fixed top-0 left-0 right-0 z-[600] lg:hidden">
+
+  <!-- TOGGLE -->
+  <input id="menu-toggle" type="checkbox" class="hidden" />
+
+  <!-- HEADER -->
   <header class="relative h-16 bg-black flex items-center px-4">
 
     <!-- HAMBURGER -->
-    <label class="flex flex-col gap-2 w-8 cursor-pointer">
+ <label id="hamburger" class="flex flex-col gap-2 w-8 cursor-pointer">
+  <input id="menu-checkbox" type="checkbox" class="peer hidden" />
 
-      <input type="checkbox" class="peer hidden" />
-
-      <span
-        class="h-[3px] w-1/2 bg-white rounded-full
+  <span class="h-[3px] w-1/2 bg-white rounded-full
                transition-transform duration-500 origin-right
                peer-checked:rotate-[225deg]
                peer-checked:-translate-x-[12px]
-               peer-checked:-translate-y-[1px]">
-      </span>
+               peer-checked:-translate-y-[1px]"></span>
 
-      <span
-        class="h-[3px] w-full bg-white rounded-full
+  <span class="h-[3px] w-full bg-white rounded-full
                transition-transform duration-500
-               peer-checked:-rotate-45">
-      </span>
+               peer-checked:-rotate-45"></span>
 
-      <span
-        class="h-[3px] w-1/2 bg-white rounded-full self-end
+  <span class="h-[3px] w-1/2 bg-white rounded-full self-end
                transition-transform duration-500 origin-left
                peer-checked:rotate-[225deg]
                peer-checked:translate-x-[12px]
-               peer-checked:translate-y-[1px]">
-      </span>
+               peer-checked:translate-y-[1px]"></span>
+</label>
 
-    </label>
 
     <!-- LOGO -->
     <div class="absolute left-1/2 -translate-x-1/2">
@@ -68,7 +67,7 @@
          -translate-x-full
          transition-transform duration-500
          ease-[cubic-bezier(.77,0,.18,1)]
-         p-8"
+         p-8 z-[500]"
 >
 
     <a class="block mb-6 text-xl font-['Pirata_One'] tracking-widest">INICIO</a>
@@ -76,46 +75,23 @@
     <a class="block mb-6 text-xl font-['Pirata_One'] tracking-widest">NOSOTROS</a>
     <a class="block mb-6 text-xl font-['Pirata_One'] tracking-widest">CONTACTO</a>
 
+    <div class="mt-10 pt-6 border-t border-white/10">
+      <span class="block text-xs tracking-[0.4em] text-gray-400 mb-2 uppercase">
+        Reservas
+      </span>
 
-
-
-<div class="mt-10 pt-6 border-t border-white/10">
-  <span
-    class="block text-xs tracking-[0.4em] text-gray-400 mb-2 uppercase"
-  >
-    Reservas
-  </span>
-
-  <a
-    href="https://wa.me/5493835774444"
-    target="_blank"
-    class="block text-xl font-['Pirata_One'] tracking-widest
-           text-[#b32020]
-           transition-colors duration-300
-           hover:text-[#25D366]"
-  >
-    +54 383 577 4444
-  </a>
-</div>
-
-
-
+      <a
+        href="https://wa.me/5493835774444"
+        target="_blank"
+        class="block text-xl font-['Pirata_One'] tracking-widest
+               text-[#b32020] transition-colors duration-300
+               hover:text-[#25D366]"
+      >
+        +54 383 577 4444
+      </a>
+    </div>
 
   </nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 </div>
 
 
