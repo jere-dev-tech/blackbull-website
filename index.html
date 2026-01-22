@@ -210,96 +210,231 @@
 
 <section class="menu-section" id="menu">
 
-  <!-- HEADER -->
-<header class="menu-header">
-  <span class="menu-eyebrow">SABORES QUE REPRESENTAN</span>
-  <h2 class="menu-title">NUESTRO MENÚ</h2>
-</header>
+  <div class="menu-inner">
 
+    <!-- HEADER -->
+    <header class="menu-header">
+      <span class="menu-eyebrow">SABORES QUE REPRESENTAN</span>
+      <h2 class="menu-title">NUESTRO MENÚ</h2>
+    </header>
 
-  <!-- CATEGORIES -->
-  <nav class="menu-categories">
+    <!-- =========================
+         CATEGORIES CAROUSEL
+    ========================= -->
+    <div class="menu-carousel">
 
-    <button class="menu-category active" data-category="starters">
-      <img src="assets/icons/starter.svg" alt="">
-      <span>Starters</span>
-    </button>
+      <button class="menu-arrow left" aria-label="Anterior">‹</button>
 
-    <button class="menu-category" data-category="mains">
-      <img src="assets/icons/cow.svg" alt="">
-      <span>Mains</span>
-    </button>
+      <div class="menu-carousel-track">
 
-    <button class="menu-category" data-category="wine">
-      <img src="assets/icons/wine.svg" alt="">
-      <span>Wine</span>
-    </button>
+        <!-- SLIDE 1 -->
+        <div class="menu-carousel-slide active">
+          <button class="menu-category active" data-category="starters">
+            <span class="menu-icon">
+              <img src="assets/images/hero/COMIDASERVIDALOGO.png" alt="Entradas">
+            </span>
+            <span class="menu-cat-title">Entradas</span>
+            <span class="menu-cat-desc">Para empezar bien</span>
+          </button>
 
-    <button class="menu-category" data-category="dessert">
-      <img src="assets/icons/dessert.svg" alt="">
-      <span>Dessert</span>
-    </button>
-
-  </nav>
-
-  <!-- MENU CONTENT -->
-  <div class="menu-content">
-
-    <!-- STARTERS -->
-    <div class="menu-panel active" data-category="starters">
-
-      <article class="menu-item">
-        <div class="menu-item-row">
-          <h4>Mozzarella Dippers</h4>
-          <span class="price">$27</span>
+          <button class="menu-category" data-category="salads">
+            <span class="menu-icon">
+              <img src="assets/images/hero/COMIDASERVIDALOGO.png" alt="Ensaladas">
+            </span>
+            <span class="menu-cat-title">Ensaladas</span>
+            <span class="menu-cat-desc">Frescas y livianas</span>
+          </button>
         </div>
-        <p>Fried mozzarella sticks, marinara sauce</p>
-      </article>
 
-      <article class="menu-item">
-        <div class="menu-item-row">
-          <h4>Onion Rings</h4>
-          <span class="price">$32</span>
+        <!-- SLIDE 2 -->
+        <div class="menu-carousel-slide">
+          <button class="menu-category" data-category="mains">
+            <span class="menu-icon">
+              <img src="assets/images/hero/COMIDASERVIDALOGO.png" alt="Principales">
+            </span>
+            <span class="menu-cat-title">Principales</span>
+            <span class="menu-cat-desc">Platos abundantes</span>
+          </button>
+
+           <button class="menu-category" data-category="dessert">
+            <span class="menu-icon">
+              <img src="assets/images/hero/COMIDASERVIDALOGO.png" alt="Postres">
+            </span>
+            <span class="menu-cat-title">Postres</span>
+            <span class="menu-cat-desc">El toque final</span>
+          </button>
         </div>
-        <p>Fried onion rings, smoked aioli</p>
-      </article>
+
+        <!-- SLIDE 3 -->
+        <div class="menu-carousel-slide">
+          <button class="menu-category" data-category="wine">
+            <span class="menu-icon">
+              <img src="assets/images/hero/COMIDASERVIDALOGO.png" alt="Bebidas">
+            </span>
+            <span class="menu-cat-title">Bebidas</span>
+            <span class="menu-cat-desc">Para acompañar</span>
+          </button>
+
+          <button class="menu-category" data-category="dessert">
+            <span class="menu-icon">
+              <img src="assets/images/hero/COMIDASERVIDALOGO.png" alt="Postres">
+            </span>
+            <span class="menu-cat-title">Postres</span>
+            <span class="menu-cat-desc">El toque final</span>
+          </button>
+        </div>
+
+
+      </div>
+
+      <button class="menu-arrow right" aria-label="Siguiente">›</button>
 
     </div>
 
-    <!-- MAINS -->
-    <div class="menu-panel" data-category="mains">
+    <!-- =========================
+         MENU CONTENT
+    ========================= -->
+    <div class="menu-content">
 
-      <article class="menu-item">
-        <div class="menu-item-row">
-          <h4>Buffalo Wings</h4>
-          <span class="price">$37</span>
-        </div>
-        <p>Spicy chicken wings, blue cheese sauce</p>
-      </article>
+      <div class="menu-panel active" data-category="starters">
+        <article class="menu-item">
+          <div class="menu-item-row">
+            <h4>Mozzarella Dippers</h4>
+            <span class="price">$27</span>
+          </div>
+          <p>Bastones de mozzarella fritos con salsa marinara</p>
+        </article>
+                <article class="menu-item">
+          <div class="menu-item-row">
+            <h4>Mozzarella Dippers</h4>
+            <span class="price">$27</span>
+          </div>
+          <p>Bastones de mozzarella fritos con salsa marinara</p>
+        </article>
+                <article class="menu-item">
+          <div class="menu-item-row">
+            <h4>Mozzarella Dippers</h4>
+            <span class="price">$27</span>
+          </div>
+          <p>Bastones de mozzarella fritos con salsa marinara</p>
+        </article>
+      </div>
 
-      <article class="menu-item">
-        <div class="menu-item-row">
-          <h4>Chili con Carne</h4>
-          <span class="price">$32</span>
-        </div>
-        <p>Ground beef, beans, spices</p>
-      </article>
+      <div class="menu-panel" data-category="salads">
+        <article class="menu-item">
+          <div class="menu-item-row">
+            <h4>Ensalada Caesar</h4>
+            <span class="price">$30</span>
+          </div>
+          <p>Lechuga, pollo grillado, croutons y aderezo caesar</p>
+        </article>
+                <article class="menu-item">
+          <div class="menu-item-row">
+            <h4>Mozzarella Dippers</h4>
+            <span class="price">$27</span>
+          </div>
+          <p>Bastones de mozzarella fritos con salsa marinara</p>
+        </article>
+               </article>
+                <article class="menu-item">
+          <div class="menu-item-row">
+            <h4>Mozzarella Dippers</h4>
+            <span class="price">$27</span>
+          </div>
+          <p>Bastones de mozzarella fritos con salsa marinara</p>
+        </article>
+        
+      </div>
 
-    </div>
+      <div class="menu-panel" data-category="mains">
+        <article class="menu-item">
+          <div class="menu-item-row">
+            <h4>Buffalo Wings</h4>
+            <span class="price">$37</span>
+          </div>
+          <p>Alitas picantes con salsa de queso azul</p>
+        </article>
 
-    <!-- WINE -->
-    <div class="menu-panel" data-category="wine">
-      <p class="menu-empty">Wine menu coming soon</p>
-    </div>
+        <article class="menu-item">
+          <div class="menu-item-row">
+            <h4>Brownie</h4>
+            <span class="price">$25</span>
+          </div>
+          <p>Brownie tibio con nueces y chocolate</p>
+        </article>
+        <article class="menu-item">
+          <div class="menu-item-row">
+            <h4>Brownie</h4>
+            <span class="price">$25</span>
+          </div>
+          <p>Brownie tibio con nueces y chocolate</p>
+        </article>
+      </div>
 
-    <!-- DESSERT -->
-    <div class="menu-panel" data-category="dessert">
-      <p class="menu-empty">Desserts coming soon</p>
+      <div class="menu-panel" data-category="dessert">
+        <article class="menu-item">
+          <div class="menu-item-row">
+            <h4>Brownie</h4>
+            <span class="price">$25</span>
+          </div>
+          <p>Brownie tibio con nueces y chocolate</p>
+        </article>
+
+
+        <article class="menu-item">
+          <div class="menu-item-row">
+            <h4>Buffalo Wings</h4>
+            <span class="price">$37</span>
+          </div>
+          <p>Alitas picantes con salsa de queso azul</p>
+        </article>
+
+        <article class="menu-item">
+          <div class="menu-item-row">
+            <h4>Buffalo Wings</h4>
+            <span class="price">$37</span>
+          </div>
+          <p>Alitas picantes con salsa de queso azul</p>
+        </article>
+
+
+      </div>
+
+      <div class="menu-panel" data-category="wine">
+        <article class="menu-item">
+          <div class="menu-item-row">
+            <h4>Vino Tinto</h4>
+            <span class="price">$28</span>
+          </div>
+          <p>Copa de vino seleccionado</p>
+        </article>
+
+     <article class="menu-item">
+          <div class="menu-item-row">
+            <h4>Vino Tinto</h4>
+            <span class="price">$28</span>
+          </div>
+          <p>Copa de vino seleccionado</p>
+        </article>
+
+
+     <article class="menu-item">
+          <div class="menu-item-row">
+            <h4>Vino Tinto</h4>
+            <span class="price">$28</span>
+          </div>
+          <p>Copa de vino seleccionado</p>
+        </article>
+
+
+
+      </div>
+
     </div>
 
   </div>
-
 </section>
+
 
 
 

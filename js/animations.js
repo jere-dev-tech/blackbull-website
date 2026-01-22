@@ -1,82 +1,154 @@
-const slider = document.querySelector('.hero-slider');
-const slides = document.querySelectorAll('.hero-slide');
-const dots = document.querySelectorAll('.dot');
+/* =========================
+   HERO SLIDER
+========================= */
 
-let index = 0;
-let startX = 0;
-let isDragging = false;
+const heroSlider = document.querySelector('.hero-slider');
+const heroSlides = document.querySelectorAll('.hero-slide');
+const heroDots = document.querySelectorAll('.dot');
 
-/* ---- FUNCTIONS ---- */
+let heroIndex = 0;
+let heroStartX = 0;
+let heroDragging = false;
 
-function goToSlide(i) {
-  index = i;
-  slider.style.transform = `translateX(-${index * 100}%)`;
+function goToHeroSlide(i) {
+  heroIndex = (i + heroSlides.length) % heroSlides.length;
+  heroSlider.style.transform = `translateX(-${heroIndex * 100}%)`;
 
-  dots.forEach(dot => dot.classList.remove('active'));
-  dots[index].classList.add('active');
+  heroDots.forEach(dot => dot.classList.remove('active'));
+  heroDots[heroIndex].classList.add('active');
 }
 
-/* ---- DOTS CLICK ---- */
-
-dots.forEach((dot, i) => {
-  dot.addEventListener('click', () => goToSlide(i));
+/* Dots */
+heroDots.forEach((dot, i) => {
+  dot.addEventListener('click', () => goToHeroSlide(i));
 });
 
-/* ---- AUTOPLAY ---- */
-
+/* Autoplay */
 setInterval(() => {
-  index = (index + 1) % slides.length;
-  goToSlide(index);
+  goToHeroSlide(heroIndex + 1);
 }, 6000);
 
-/* ---- DRAG (MOUSE + TOUCH) ---- */
-
-slider.addEventListener('mousedown', e => {
-  startX = e.clientX;
-  isDragging = true;
+/* Drag */
+heroSlider.addEventListener('mousedown', e => {
+  heroStartX = e.clientX;
+  heroDragging = true;
 });
 
-slider.addEventListener('mouseup', e => {
-  if (!isDragging) return;
-  const diff = e.clientX - startX;
-  handleDrag(diff);
-  isDragging = false;
+heroSlider.addEventListener('mouseup', e => {
+  if (!heroDragging) return;
+  const diff = e.clientX - heroStartX;
+  handleHeroDrag(diff);
+  heroDragging = false;
 });
 
-slider.addEventListener('touchstart', e => {
-  startX = e.touches[0].clientX;
+heroSlider.addEventListener('touchstart', e => {
+  heroStartX = e.touches[0].clientX;
 });
 
-slider.addEventListener('touchend', e => {
-  const diff = e.changedTouches[0].clientX - startX;
-  handleDrag(diff);
+heroSlider.addEventListener('touchend', e => {
+  const diff = e.changedTouches[0].clientX - heroStartX;
+  handleHeroDrag(diff);
 });
 
-function handleDrag(diff) {
-  if (diff > 50 && index > 0) {
-    goToSlide(index - 1);
-  } else if (diff < -50 && index < slides.length - 1) {
-    goToSlide(index + 1);
+function handleHeroDrag(diff) {
+  if (diff > 50) {
+    goToHeroSlide(heroIndex - 1);
+  } else if (diff < -50) {
+    goToHeroSlide(heroIndex + 1);
   }
 }
 
-
 /* =========================
-   MENU CATEGORIES (MOBILE)
+   MENU CAROUSEL (INFINITE)
 ========================= */
 
-const menuCategories = document.querySelectorAll('.menu-category');
+const carouselTrack = document.querySelector('.menu-carousel-track');
+const carouselSlides = document.querySelectorAll('.menu-carousel-slide');
+const menuButtons = document.querySelectorAll('.menu-category');
 const menuPanels = document.querySelectorAll('.menu-panel');
+const arrowLeft = document.querySelector('.menu-arrow.left');
+const arrowRight = document.querySelector('.menu-arrow.right');
 
-menuCategories.forEach(category => {
-  category.addEventListener('click', () => {
-    const target = category.dataset.category;
+let currentSlide = 0;
 
-    // active category
-    menuCategories.forEach(c => c.classList.remove('active'));
-    category.classList.add('active');
+/* Update position */
+function updateMenuCarousel() {
+  carouselTrack.style.transition = 'transform 0.45s ease';
+  carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
 
-    // show panel
+/* Normalize index (infinite) */
+function setSlide(index) {
+  currentSlide = (index + carouselSlides.length) % carouselSlides.length;
+  updateMenuCarousel();
+}
+
+/* Arrows */
+arrowLeft.addEventListener('click', () => {
+  setSlide(currentSlide - 1);
+});
+
+arrowRight.addEventListener('click', () => {
+  setSlide(currentSlide + 1);
+});
+
+/* =========================
+   DRAG / SWIPE (INFINITE)
+========================= */
+
+let isDragging = false;
+let startX = 0;
+let deltaX = 0;
+const swipeThreshold = 60;
+
+/* Mouse */
+carouselTrack.addEventListener('mousedown', e => {
+  isDragging = true;
+  startX = e.clientX;
+});
+
+document.addEventListener('mousemove', e => {
+  if (!isDragging) return;
+  deltaX = e.clientX - startX;
+});
+
+document.addEventListener('mouseup', () => {
+  if (!isDragging) return;
+  handleCarouselSwipe();
+  isDragging = false;
+});
+
+/* Touch */
+carouselTrack.addEventListener('touchstart', e => {
+  startX = e.touches[0].clientX;
+});
+
+carouselTrack.addEventListener('touchmove', e => {
+  deltaX = e.touches[0].clientX - startX;
+});
+
+carouselTrack.addEventListener('touchend', handleCarouselSwipe);
+
+function handleCarouselSwipe() {
+  if (deltaX > swipeThreshold) {
+    setSlide(currentSlide - 1);
+  } else if (deltaX < -swipeThreshold) {
+    setSlide(currentSlide + 1);
+  }
+  deltaX = 0;
+}
+
+/* =========================
+   CATEGORY CLICK (PANELS)
+========================= */
+
+menuButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const target = button.dataset.category;
+
+    menuButtons.forEach(b => b.classList.remove('active'));
+    button.classList.add('active');
+
     menuPanels.forEach(panel => {
       panel.classList.toggle(
         'active',
@@ -85,64 +157,52 @@ menuCategories.forEach(category => {
     });
   });
 });
-const hamburgerCheckbox = document.querySelector(
-  'header input[type="checkbox"]'
-);
-const mobileMenu = document.getElementById('mobile-menu');
 
-hamburgerCheckbox.addEventListener('change', () => {
-  if (hamburgerCheckbox.checked) {
-    mobileMenu.classList.remove('-translate-x-full');
-  } else {
-    mobileMenu.classList.add('-translate-x-full');
-  }
-});
-
-
+/* =========================
+   MOBILE MENU (HAMBURGER)
+========================= */
 
 const checkbox = document.getElementById('menu-checkbox');
-const menu = document.getElementById('mobile-menu');
+const mobileMenu = document.getElementById('mobile-menu');
 
-/* abrir / cerrar */
 checkbox.addEventListener('change', () => {
-  if (checkbox.checked) {
-    menu.classList.remove('-translate-x-full');
-    menu.classList.add('translate-x-0');
-  } else {
-    menu.classList.add('-translate-x-full');
-    menu.classList.remove('translate-x-0');
-  }
+  mobileMenu.classList.toggle('-translate-x-full', !checkbox.checked);
+  mobileMenu.classList.toggle('translate-x-0', checkbox.checked);
 });
 
-/* click afuera */
-document.addEventListener('click', (e) => {
+/* Click outside */
+document.addEventListener('click', e => {
   if (!checkbox.checked) return;
 
-  if (!menu.contains(e.target) && !e.target.closest('#hamburger')) {
+  if (!mobileMenu.contains(e.target) && !e.target.closest('#hamburger')) {
     checkbox.checked = false;
-    menu.classList.add('-translate-x-full');
-    menu.classList.remove('translate-x-0');
+    mobileMenu.classList.add('-translate-x-full');
+    mobileMenu.classList.remove('translate-x-0');
   }
 });
 
-/* scroll hacia abajo */
+/* Close on scroll */
 let lastScroll = window.scrollY;
 window.addEventListener('scroll', () => {
   if (!checkbox.checked) return;
 
   if (window.scrollY > lastScroll + 10) {
     checkbox.checked = false;
-    menu.classList.add('-translate-x-full');
-    menu.classList.remove('translate-x-0');
+    mobileMenu.classList.add('-translate-x-full');
+    mobileMenu.classList.remove('translate-x-0');
   }
   lastScroll = window.scrollY;
 });
+/* =========================
+   MENU CATEGORY – CLICK OUTSIDE (FIX)
+========================= */
 
+document.addEventListener('click', (e) => {
+  const isCategory = e.target.closest('.menu-category');
+  const isCarousel = e.target.closest('.menu-carousel');
 
-
-
-
-
-
-
-
+  // Si el click NO fue en una categoría ni dentro del carrusel
+  if (!isCategory && !isCarousel) {
+    menuButtons.forEach(btn => btn.classList.remove('active'));
+  }
+});
