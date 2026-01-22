@@ -267,7 +267,8 @@ body {
 .menu-inner {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 1.25rem; /* aire lateral real */
+  padding: 1rem; /* aire lateral real */
+   overflow: visible;
 }
 
 
@@ -561,8 +562,7 @@ body {
 .menu-carousel {
   position: relative;
   width: 100%;
-  overflow: hidden;
-  margin-bottom: 3rem;
+  overflow: visible; /* CLAVE */
 }
 
 /* TRACK QUE SE MUEVE */
@@ -698,11 +698,11 @@ body {
 }
 
 .menu-arrow.left {
-  left: 0;
+  left: -8px;
 }
 
 .menu-arrow.right {
-  right: 0;
+  right: -8px;
 }
 
 .menu-carousel-track {
@@ -711,4 +711,42 @@ body {
 
 .menu-carousel-track:active {
   cursor: grabbing;
+}
+/* =========================
+   MOBILE READABILITY BOOST
+========================= */
+
+@media (max-width: 600px) {
+
+  /* Categorías */
+  .menu-cat-title {
+    font-size: 1rem;               /* antes ~0.85 */
+    letter-spacing: 0.14em;
+  }
+
+  .menu-cat-desc {
+    font-size: 0.75rem;            /* antes 0.65 */
+    line-height: 1.4;
+  }
+
+  /* Items del menú */
+  .menu-item-row h4 {
+    font-size: 1.1rem;             /* antes 1rem */
+    letter-spacing: 0.1em;
+  }
+
+  .menu-item-row .price {
+    font-size: 1.05rem;
+  }
+
+  .menu-item p {
+    font-size: 0.95rem;            /* antes 0.85 */
+    line-height: 1.7;
+  }
+
+  /* Separación visual */
+  .menu-item {
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+  }
 }
