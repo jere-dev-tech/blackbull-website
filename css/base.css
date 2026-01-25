@@ -153,6 +153,25 @@ body {
 .hero-btn:hover::after {
   transform: translateX(0);
 }
+/* =========================
+   HERO BUTTON – APPEAR EFFECT
+========================= */
+
+.hero-btn {
+  transform: scale(0.6) translateY(20px);
+  opacity: 0;
+  transition:
+    transform 0.9s cubic-bezier(.22,1,.36,1),
+    opacity 0.9s ease;
+  transition-delay: 0.35s; /* ⏱️ delay NOTORIO */
+}
+
+/* Visible cuando el slide está activo */
+.hero-slide.active .hero-btn {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
 
 /* =========================
    HERO DOTS (MOBILE)
@@ -404,18 +423,24 @@ body {
 }
 
 .menu-cat-desc {
-  height: 1.2em;                 /* espacio reservado SIEMPRE */
+  min-height: 2.4em;          /* CLAVE: reserva espacio real */
+  line-height: 1.2;
   font-size: 0.65rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #aaa;
   text-align: center;
 
-  visibility: hidden;
+  margin-top: 0.4rem;         /* separa del título */
+  display: flex;              /* centra verticalmente */
+  align-items: center;
+  justify-content: center;
+
   opacity: 0;
   transform: translateY(-4px);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
 
 /* SOLO la activa se muestra */
 .menu-category.active .menu-cat-desc {
@@ -755,14 +780,13 @@ body {
   }
 }
 .menu-icon {
-  width: 46px;
-  height: 46px;
+  width: 70px;
+  height: 70px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 
 .menu-icon-mask {
   width: 100%;
@@ -781,6 +805,12 @@ body {
   transition: background-color 0.3s ease;
 }
 
+/* SOLO CLICK */
+.menu-category.active .menu-icon-mask {
+  background-color: #b32020;
+}
+
+
 /* SOLO estado activo (click) */
 .menu-category.active .menu-icon-mask {
   background-color: #b32020;
@@ -793,4 +823,73 @@ body {
 .menu-icon-mask.bandeja {
   -webkit-mask-image: url("../assets/images/hero/bandeja.svg");
   mask-image: url("../assets/images/hero/bandeja.svg");
+}
+/* Hero icon: rojo por defecto */
+.menu-icon--hero .menu-icon-mask {
+  background-color: #b32020;
+}
+/* Hero icon adjustments */
+/* Ajuste fino ícono hero */
+.menu-icon--hero {
+  width: 60px;                 /* antes ~110 → más premium */
+  height: 60px;
+
+  margin-bottom: 1rem;         /* mantiene aire con el texto */
+  transform: translateY(-40px); /* lo sube más */
+}
+
+.hero-eyebrow,
+.hero-title {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(.22,1,.36,1);
+}
+.hero-slide.active .hero-eyebrow {
+  opacity: 1;
+  transform: translateY(0);
+  letter-spacing: 0.2em;           /* vuelve a su valor normal */
+  filter: blur(0);
+
+  transition-delay: 0.2s;
+}
+
+
+.hero-slide.active .hero-title {
+  opacity: 1;
+  transform: translateY(0);
+  letter-spacing: 0.15em;          /* el que ya usás */
+  filter: blur(0);
+
+  transition-delay: 0.4s;
+}
+
+.hero-eyebrow {
+  opacity: 0;
+  transform: translateY(10px);
+  letter-spacing: 0.45em;          /* más abierto al inicio */
+  filter: blur(2px);
+  
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(.22,1,.36,1),
+    letter-spacing 1.2s ease,
+    filter 1s ease;
+}
+.hero-title {
+  opacity: 0;
+  transform: translateY(22px);
+  letter-spacing: 0.25em;          /* un poco más abierto */
+  filter: blur(3px);
+
+  transition:
+    opacity 1.1s ease,
+    transform 1.1s cubic-bezier(.22,1,.36,1),
+    letter-spacing 1.3s ease,
+    filter 1.1s ease;
+}
+.menu-icon-mask.ensalada {
+  -webkit-mask-image: url("../assets/images/hero/Salad.svg");
+  mask-image: url("../assets/images/hero/Salad.svg");
 }

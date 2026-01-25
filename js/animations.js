@@ -14,9 +14,32 @@ function goToHeroSlide(i) {
   heroIndex = (i + heroSlides.length) % heroSlides.length;
   heroSlider.style.transform = `translateX(-${heroIndex * 100}%)`;
 
+  // Reset slides
+  heroSlides.forEach(slide => slide.classList.remove('active'));
+  heroSlides[heroIndex].classList.add('active');
+
+  // Dots
   heroDots.forEach(dot => dot.classList.remove('active'));
   heroDots[heroIndex].classList.add('active');
+
+  // 🔥 EFECTO BOTÓN (SIEMPRE)
+  const btn = heroSlides[heroIndex].querySelector('.hero-btn');
+  if (btn) {
+    // Reset duro
+    btn.style.transition = 'none';
+    btn.style.opacity = '0';
+    btn.style.transform = 'scale(0.6) translateY(20px)';
+
+    // Forzar reflow
+    btn.offsetHeight;
+
+    // Re-aplicar animación con delay
+    btn.style.transition = '';
+    btn.style.opacity = '';
+    btn.style.transform = '';
+  }
 }
+
 
 /* Dots */
 heroDots.forEach((dot, i) => {
