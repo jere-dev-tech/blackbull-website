@@ -14,34 +14,25 @@ function goToHeroSlide(i) {
   heroIndex = (i + heroSlides.length) % heroSlides.length;
   heroSlider.style.transform = `translateX(-${heroIndex * 100}%)`;
 
-  // Reset slides
   heroSlides.forEach(slide => slide.classList.remove('active'));
   heroSlides[heroIndex].classList.add('active');
 
-  // Dots
   heroDots.forEach(dot => dot.classList.remove('active'));
   heroDots[heroIndex].classList.add('active');
 
-  // 🔥 EFECTO BOTÓN (SIEMPRE)
+  /* Re-disparar animación del botón */
   const btn = heroSlides[heroIndex].querySelector('.hero-btn');
   if (btn) {
-    // Reset duro
     btn.style.transition = 'none';
     btn.style.opacity = '0';
     btn.style.transform = 'scale(0.6) translateY(20px)';
-
-    // Forzar reflow
-    btn.offsetHeight;
-
-    // Re-aplicar animación con delay
+    btn.offsetHeight; // force reflow
     btn.style.transition = '';
     btn.style.opacity = '';
     btn.style.transform = '';
   }
 }
 
-
-/* Dots */
 heroDots.forEach((dot, i) => {
   dot.addEventListener('click', () => goToHeroSlide(i));
 });
@@ -51,7 +42,7 @@ setInterval(() => {
   goToHeroSlide(heroIndex + 1);
 }, 6000);
 
-/* Drag */
+/* Drag / Swipe hero */
 heroSlider.addEventListener('mousedown', e => {
   heroStartX = e.clientX;
   heroDragging = true;
@@ -59,8 +50,7 @@ heroSlider.addEventListener('mousedown', e => {
 
 heroSlider.addEventListener('mouseup', e => {
   if (!heroDragging) return;
-  const diff = e.clientX - heroStartX;
-  handleHeroDrag(diff);
+  handleHeroDrag(e.clientX - heroStartX);
   heroDragging = false;
 });
 
@@ -69,62 +59,44 @@ heroSlider.addEventListener('touchstart', e => {
 });
 
 heroSlider.addEventListener('touchend', e => {
-  const diff = e.changedTouches[0].clientX - heroStartX;
-  handleHeroDrag(diff);
+  handleHeroDrag(e.changedTouches[0].clientX - heroStartX);
 });
 
 function handleHeroDrag(diff) {
-  if (diff > 50) {
-    goToHeroSlide(heroIndex - 1);
-  } else if (diff < -50) {
-    goToHeroSlide(heroIndex + 1);
-  }
+  if (diff > 50) goToHeroSlide(heroIndex - 1);
+  else if (diff < -50) goToHeroSlide(heroIndex + 1);
 }
 
 /* =========================
-   MENU CAROUSEL (INFINITE)
+   MENU CAROUSEL
 ========================= */
 
 const carouselTrack = document.querySelector('.menu-carousel-track');
 const carouselSlides = document.querySelectorAll('.menu-carousel-slide');
-const menuButtons = document.querySelectorAll('.menu-category');
-const menuPanels = document.querySelectorAll('.menu-panel');
 const arrowLeft = document.querySelector('.menu-arrow.left');
 const arrowRight = document.querySelector('.menu-arrow.right');
 
 let currentSlide = 0;
 
-/* Update position */
 function updateMenuCarousel() {
   carouselTrack.style.transition = 'transform 0.45s ease';
   carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
 }
 
-/* Normalize index (infinite) */
 function setSlide(index) {
   currentSlide = (index + carouselSlides.length) % carouselSlides.length;
   updateMenuCarousel();
 }
 
-/* Arrows */
-arrowLeft.addEventListener('click', () => {
-  setSlide(currentSlide - 1);
-});
+arrowLeft.addEventListener('click', () => setSlide(currentSlide - 1));
+arrowRight.addEventListener('click', () => setSlide(currentSlide + 1));
 
-arrowRight.addEventListener('click', () => {
-  setSlide(currentSlide + 1);
-});
-
-/* =========================
-   DRAG / SWIPE (INFINITE)
-========================= */
-
+/* Drag / Swipe carousel */
 let isDragging = false;
 let startX = 0;
 let deltaX = 0;
 const swipeThreshold = 60;
 
-/* Mouse */
 carouselTrack.addEventListener('mousedown', e => {
   isDragging = true;
   startX = e.clientX;
@@ -141,7 +113,6 @@ document.addEventListener('mouseup', () => {
   isDragging = false;
 });
 
-/* Touch */
 carouselTrack.addEventListener('touchstart', e => {
   startX = e.touches[0].clientX;
 });
@@ -153,20 +124,24 @@ carouselTrack.addEventListener('touchmove', e => {
 carouselTrack.addEventListener('touchend', handleCarouselSwipe);
 
 function handleCarouselSwipe() {
-  if (deltaX > swipeThreshold) {
-    setSlide(currentSlide - 1);
-  } else if (deltaX < -swipeThreshold) {
-    setSlide(currentSlide + 1);
-  }
+  if (deltaX > swipeThreshold) setSlide(currentSlide - 1);
+  else if (deltaX < -swipeThreshold) setSlide(currentSlide + 1);
   deltaX = 0;
 }
 
 /* =========================
-   CATEGORY CLICK (PANELS)
+   MENU CATEGORIES + PANELS
 ========================= */
 
+const menuSection = document.querySelector('.menu-section');
+const menuButtons = document.querySelectorAll('.menu-category');
+const menuPanels = document.querySelectorAll('.menu-panel');
+
+/* Click en categoría */
 menuButtons.forEach(button => {
-  button.addEventListener('click', () => {
+  button.addEventListener('click', e => {
+    e.stopPropagation(); // evita que el document click dispare
+
     const target = button.dataset.category;
 
     menuButtons.forEach(b => b.classList.remove('active'));
@@ -181,8 +156,17 @@ menuButtons.forEach(button => {
   });
 });
 
+/* Click fuera de una card → SOLO desactiva la card */
+document.addEventListener('click', e => {
+  if (!e.target.closest('.menu-category')) {
+    menuButtons.forEach(b => b.classList.remove('active'));
+    // ⚠️ NO tocamos los menu-panel
+  }
+});
+
+
 /* =========================
-   MOBILE MENU (HAMBURGER)
+   MOBILE MENU
 ========================= */
 
 const checkbox = document.getElementById('menu-checkbox');
@@ -193,7 +177,7 @@ checkbox.addEventListener('change', () => {
   mobileMenu.classList.toggle('translate-x-0', checkbox.checked);
 });
 
-/* Click outside */
+/* Click fuera */
 document.addEventListener('click', e => {
   if (!checkbox.checked) return;
 
@@ -204,7 +188,7 @@ document.addEventListener('click', e => {
   }
 });
 
-/* Close on scroll */
+/* Cerrar al scrollear */
 let lastScroll = window.scrollY;
 window.addEventListener('scroll', () => {
   if (!checkbox.checked) return;
@@ -216,17 +200,30 @@ window.addEventListener('scroll', () => {
   }
   lastScroll = window.scrollY;
 });
-/* =========================
-   MENU CATEGORY – CLICK OUTSIDE (FIX)
-========================= */
+document.addEventListener("DOMContentLoaded", () => {
+  const heroMenuBtn = document.getElementById("heroMenuBtn");
+  const menuSection = document.getElementById("menu");
 
-document.querySelectorAll('.menu-category').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document
-      .querySelectorAll('.menu-category')
-      .forEach(b => b.classList.remove('active'));
+  if (!heroMenuBtn || !menuSection) return;
 
-    btn.classList.add('active');
+  heroMenuBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // 1️⃣ Forzamos animación completa del botón
+    heroMenuBtn.classList.add("is-clicked");
+
+    // 2️⃣ Esperamos que termine el barrido
+    setTimeout(() => {
+      menuSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+      // 3️⃣ Limpieza visual
+      setTimeout(() => {
+        heroMenuBtn.classList.remove("is-clicked");
+      }, 600);
+
+    }, 450);
   });
 });
-

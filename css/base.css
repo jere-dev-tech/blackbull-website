@@ -271,7 +271,7 @@ body {
   background-repeat: no-repeat;
 }
 
-.menu-section::before {
+.menu-section::before { pointer-events: none;
   content: "";
   position: absolute;
   inset: 0;
@@ -329,86 +329,7 @@ body {
   background: #991B1F;
 }
 
-/* =========================
-   CATEGORIES – SLIDER
-========================= */
 
-
-
-
-
-/* Cada categoría (mobile first → 2 visibles) */
-.menu-category {
-  flex: 0 0 auto;
-  width: 50%;
-  max-width: 140px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  gap: 0.35rem;
-
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-/* Normaliza la altura de todas las cards */
-.menu-category {
-  min-height: 180px;
-}
-
-
-
-
-
-
-
-/* Tablet → 3 visibles */
-@media (min-width: 600px) {
-  .menu-category {
-    width: 33.3333%;
-    max-width: 160px;
-  }
-}
-
-/* Desktop → 4 visibles */
-@media (min-width: 900px) {
-  .menu-category {
-    width: 25%;
-    max-width: 180px;
-  }
-}
-
-/* Desktop grande → 5 visibles */
-@media (min-width: 1200px) {
-  .menu-category {
-    width: 20%;
-    max-width: 200px;
-  }
-}
-
-
-/* =========================
-   CATEGORY ACTIVE STATE
-========================= */
-
-.menu-category {
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 8px;
-  transition:
-    background 0.25s ease,
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-/* ACTIVO */
-.menu-category.active {
-  background: rgba(255, 255, 255, 0.12); /* gris translúcido */
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
-  transform: translateY(-4px);
-}
 
 
 /* =========================
@@ -624,31 +545,6 @@ body {
   }
 }
 
-/* =========================
-   CATEGORY CARD
-========================= */
-
-.menu-category {
-  width: 100%;
-  padding: 1.2rem 0.5rem;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  gap: 0.4rem;
-
-  background: transparent;
-  border: none;
-  cursor: pointer;
-
-  transition: transform 0.25s ease;
-}
-
-.menu-category.active {
-  transform: translateY(-4px);
-}
 
 /* =========================
    ICONOS
@@ -892,4 +788,132 @@ body {
 .menu-icon-mask.ensalada {
   -webkit-mask-image: url("../assets/images/hero/Salad.svg");
   mask-image: url("../assets/images/hero/Salad.svg");
+}
+/* =========================
+   MENU CATEGORIES – DEFINITIVO
+========================= */
+
+.menu-category {
+  width: 100%;
+  min-height: 180px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+
+  background: rgba(255,255,255,0.04);
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* ICONO */
+.menu-icon {
+  width: 70px;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.3s ease;
+}
+
+/* SVG MASK */
+.menu-icon-mask {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+
+  transition: background-color 0.3s ease;
+}
+
+/* TEXTO */
+.menu-cat-title {
+  font-family: 'Pirata One', cursive;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-align: center;
+}
+
+.menu-cat-desc {
+  min-height: 2.4em;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #aaa;
+  text-align: center;
+
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* =========================
+   ACTIVE STATE (EFECTO BUENO)
+========================= */
+
+.menu-category.active {
+  background: rgba(255,255,255,0.12);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+  transform: translateY(-4px);
+}
+
+.menu-category.active .menu-icon {
+  transform: translateY(-8px);
+}
+
+.menu-category.active .menu-cat-desc {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menu-category.active .menu-icon-mask {
+  background-color: #b32020;
+}
+
+/* =========================
+   SVG SOURCES
+========================= */
+
+.menu-icon-mask.bandeja {
+  -webkit-mask-image: url("../assets/images/hero/bandeja.svg");
+  mask-image: url("../assets/images/hero/bandeja.svg");
+}
+
+.menu-icon-mask.ensalada {
+  -webkit-mask-image: url("../assets/images/hero/Salad.svg");
+  mask-image: url("../assets/images/hero/Salad.svg");
+}
+.menu-icon-mask.burger {
+  -webkit-mask-image: url("../assets/images/hero/burguer.svg");
+  mask-image: url("../assets/images/hero/burguer.svg");
+}
+.menu-icon-mask.bebida {
+  -webkit-mask-image: url("../assets/images/hero/bebida.svg");
+  mask-image: url("../assets/images/hero/bebida.svg");
+}
+.menu-icon-mask.postre {
+  -webkit-mask-image: url("../assets/images/hero/pastel.svg");
+  mask-image: url("../assets/images/hero/pastel.svg");
+}
+
+.hero-btn.is-clicked::before,
+.hero-btn.is-clicked::after {
+  transform: translateX(0);
 }

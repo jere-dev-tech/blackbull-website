@@ -113,9 +113,10 @@
   <span class="hero-eyebrow">FAST FOOD PREMIUM</span>
   <h1 class="hero-title">BIENVENIDOS A<br>BLACK BULL</h1>
 
-  <button class="hero-btn">
-    <span>VER MENÚ</span>
-  </button>
+<button class="hero-btn" id="heroMenuBtn">
+  <span>VER MENÚ</span>
+</button>
+
 
       </div>
     </div>
@@ -228,89 +229,48 @@
     <div class="menu-carousel">
 
       <button class="menu-arrow left" aria-label="Anterior">‹</button>
+<div class="menu-carousel-track">
 
-      <div class="menu-carousel-track">
+  <!-- SLIDE 1 -->
+  <div class="menu-carousel-slide active">
+    <button class="menu-category" data-category="starters">
+      <span class="menu-icon">
+        <span class="menu-icon-mask bandeja"></span>
+      </span>
+      <span class="menu-cat-title">PRINCIPALES</span>
+      <span class="menu-cat-desc">Platos abundantes</span>
+    </button>
 
-        <!-- SLIDE 1 -->
-        <div class="menu-carousel-slide active">
-<button class="menu-category" data-category="starters">
-  <span class="menu-icon">
-    <span class="menu-icon-mask bandeja"></span>
-  </span>
+    <button class="menu-category" data-category="salads">
+      <span class="menu-icon">
+        <span class="menu-icon-mask ensalada"></span>
+      </span>
+      <span class="menu-cat-title">ENSALADAS</span>
+      <span class="menu-cat-desc">Frescas y livianas</span>
+    </button>
+  </div>
 
-  <span class="menu-cat-title">Entradas</span>
-  <span class="menu-cat-desc">Para empezar bien</span>
-</button>
+  <!-- SLIDE 2 -->
+  <div class="menu-carousel-slide">
+    <button class="menu-category" data-category="wine">
+      <span class="menu-icon">
+        <span class="menu-icon-mask bebida"></span>
+      </span>
+      <span class="menu-cat-title">Bebidas</span>
+      <span class="menu-cat-desc">Para acompañar</span>
+    </button>
 
+    <button class="menu-category" data-category="dessert">
+      <span class="menu-icon">
+        <span class="menu-icon-mask postre"></span>
+      </span>
+      <span class="menu-cat-title">Postres</span>
+      <span class="menu-cat-desc">El toque final</span>
+    </button>
+  </div>
 
-          <button class="menu-category" data-category="salads">
-<span class="menu-icon">
- <span class="menu-icon-mask ensalada"></span>
+</div>
 
-</span>
-
-            
-            <span class="menu-cat-title">Ensaladas</span>
-            <span class="menu-cat-desc">Frescas y livianas</span>
-          </button>
-        </div>
-
-        <!-- SLIDE 2 -->
-        <div class="menu-carousel-slide">
-          <button class="menu-category" data-category="mains">
-
-
-            <span class="menu-icon">
-              <img src="assets/images/hero/COMIDASERVIDALOGO.png" alt="Principales">
-            </span>
-            <span class="menu-cat-title">Principales</span>
-            <span class="menu-cat-desc">Platos abundantes</span>
-          </button>
-
-           <button class="menu-category" data-category="dessert">
-
-
-
-
-
-
-            <span class="menu-icon">
-              <img src="assets/images/hero/COMIDASERVIDALOGO.png" alt="Postres">
-            </span>
-            <span class="menu-cat-title">Postres</span>
-            <span class="menu-cat-desc">El toque final</span>
-          </button>
-        </div>
-
-        <!-- SLIDE 3 -->
-        <div class="menu-carousel-slide">
-          <button class="menu-category" data-category="wine">
-            <span class="menu-icon">
-              <img src="assets/images/hero/COMIDASERVIDALOGO.png" alt="Bebidas">
-
-
-
-
-
-            </span>
-            <span class="menu-cat-title">Bebidas</span>
-            <span class="menu-cat-desc">Para acompañar</span>
-          </button>
-
-          <button class="menu-category" data-category="dessert">
-            <span class="menu-icon">
-              <img src="assets/images/hero/COMIDASERVIDALOGO.png" alt="Postres">
-
-
-
-            </span>
-            <span class="menu-cat-title">Postres</span>
-            <span class="menu-cat-desc">El toque final</span>
-          </button>
-        </div>
-
-
-      </div>
 
       <button class="menu-arrow right" aria-label="Siguiente">›</button>
 
@@ -321,55 +281,77 @@
     ========================= -->
     <div class="menu-content">
 
-      <div class="menu-panel active" data-category="starters">
-        <article class="menu-item">
-          <div class="menu-item-row">
-            <h4>Mozzarella Dippers</h4>
-            <span class="price">$27</span>
-          </div>
-          <p>Bastones de mozzarella fritos con salsa marinara</p>
-        </article>
-                <article class="menu-item">
-          <div class="menu-item-row">
-            <h4>Mozzarella Dippers</h4>
-            <span class="price">$27</span>
-          </div>
-          <p>Bastones de mozzarella fritos con salsa marinara</p>
-        </article>
-                <article class="menu-item">
-          <div class="menu-item-row">
-            <h4>Mozzarella Dippers</h4>
-            <span class="price">$27</span>
-          </div>
-          <p>Bastones de mozzarella fritos con salsa marinara</p>
-        </article>
-      </div>
+<div class="menu-panel active" data-category="starters">
 
-      <div class="menu-panel" data-category="salads">
-        <article class="menu-item">
-          <div class="menu-item-row">
-            <h4>Ensalada Caesar</h4>
-            <span class="price">$30</span>
-          </div>
-          <p>Lechuga, pollo grillado, croutons y aderezo caesar</p>
-        </article>
-                <article class="menu-item">
-          <div class="menu-item-row">
-            <h4>Mozzarella Dippers</h4>
-            <span class="price">$27</span>
-          </div>
-          <p>Bastones de mozzarella fritos con salsa marinara</p>
-        </article>
-               </article>
-                <article class="menu-item">
-          <div class="menu-item-row">
-            <h4>Mozzarella Dippers</h4>
-            <span class="price">$27</span>
-          </div>
-          <p>Bastones de mozzarella fritos con salsa marinara</p>
-        </article>
-        
-      </div>
+  <article class="menu-item">
+    <div class="menu-item-row">
+      <h4>Hamburguesa Clásica</h4>
+      <span class="price">$8.900</span>
+    </div>
+    <p>Carne vacuna, lechuga, tomate, cebolla y aderezos clásicos. Incluye papas fritas.</p>
+  </article>
+
+  <article class="menu-item">
+    <div class="menu-item-row">
+      <h4>Hamburguesa con Cheddar</h4>
+      <span class="price">$9.800</span>
+    </div>
+    <p>Medallón de carne, queso cheddar fundido y cebolla salteada. Con papas fritas.</p>
+  </article>
+
+  <article class="menu-item">
+    <div class="menu-item-row">
+      <h4>Hamburguesa Bacon & Cheese</h4>
+      <span class="price">$10.500</span>
+    </div>
+    <p>Carne vacuna, cheddar, panceta crocante y salsa especial. Acompañada con papas.</p>
+  </article>
+
+  <article class="menu-item">
+    <div class="menu-item-row">
+      <h4>Doble Burger Black Bull</h4>
+      <span class="price">$12.500</span>
+    </div>
+    <p>Doble medallón de carne, doble cheddar, bacon y salsa Black Bull. Incluye papas.</p>
+  </article>
+
+</div>
+
+<div class="menu-panel" data-category="salads">
+
+  <article class="menu-item">
+    <div class="menu-item-row">
+      <h4>Ensalada Caesar</h4>
+      <span class="price">$7.200</span>
+    </div>
+    <p>Lechuga romana, pollo grillado, croutons y aderezo caesar.</p>
+  </article>
+
+  <article class="menu-item">
+    <div class="menu-item-row">
+      <h4>Ensalada de Pollo Grillado</h4>
+      <span class="price">$7.800</span>
+    </div>
+    <p>Mix de hojas verdes, pollo grillado, tomate, huevo y queso.</p>
+  </article>
+
+  <article class="menu-item">
+    <div class="menu-item-row">
+      <h4>Ensalada con Carne</h4>
+      <span class="price">$8.400</span>
+    </div>
+    <p>Hojas verdes, carne grillada en tiras, cebolla morada y queso.</p>
+  </article>
+
+  <article class="menu-item">
+    <div class="menu-item-row">
+      <h4>Ensalada Mixta</h4>
+      <span class="price">$6.200</span>
+    </div>
+    <p>Lechuga, tomate y cebolla. Simple, fresca y liviana.</p>
+  </article>
+
+</div>
 
       <div class="menu-panel" data-category="mains">
         <article class="menu-item">
@@ -396,64 +378,98 @@
         </article>
       </div>
 
-      <div class="menu-panel" data-category="dessert">
-        <article class="menu-item">
-          <div class="menu-item-row">
-            <h4>Brownie</h4>
-            <span class="price">$25</span>
-          </div>
-          <p>Brownie tibio con nueces y chocolate</p>
-        </article>
+<div class="menu-panel" data-category="dessert">
+
+  <article class="menu-item">
+    <div class="menu-item-row">
+      <h4>Brownie con Chocolate</h4>
+      <span class="price">$3.800</span>
+    </div>
+    <p>Brownie tibio con salsa de chocolate.</p>
+  </article>
+
+  <article class="menu-item">
+    <div class="menu-item-row">
+      <h4>Brownie con Helado</h4>
+      <span class="price">$4.500</span>
+    </div>
+    <p>Brownie tibio acompañado con bocha de helado.</p>
+  </article>
+
+  <article class="menu-item">
+    <div class="menu-item-row">
+      <h4>Flan Casero</h4>
+      <span class="price">$3.200</span>
+    </div>
+    <p>Flan con dulce de leche o crema.</p>
+  </article>
+
+  <article class="menu-item">
+    <div class="menu-item-row">
+      <h4>Chocotorta</h4>
+      <span class="price">$4.200</span>
+    </div>
+    <p>Clásica chocotorta casera.</p>
+  </article>
+
+</div>
 
 
-        <article class="menu-item">
-          <div class="menu-item-row">
-            <h4>Buffalo Wings</h4>
-            <span class="price">$37</span>
-          </div>
-          <p>Alitas picantes con salsa de queso azul</p>
-        </article>
+<div class="menu-panel" data-category="wine">
 
-        <article class="menu-item">
-          <div class="menu-item-row">
-            <h4>Buffalo Wings</h4>
-            <span class="price">$37</span>
-          </div>
-          <p>Alitas picantes con salsa de queso azul</p>
-        </article>
+  <!-- GASEOSAS -->
+  <article class="menu-item">
+    <div class="menu-item-row">
+      <h4>Gaseosa 500 ml</h4>
+      <span class="price">$2.500</span>
+    </div>
+    <p>Coca-Cola, Sprite o Fanta.</p>
+  </article>
 
+  <article class="menu-item">
+    <div class="menu-item-row">
+      <h4>Gaseosa 1,5 L</h4>
+      <span class="price">$4.200</span>
+    </div>
+    <p>Ideal para compartir.</p>
+  </article>
 
-      </div>
+  <!-- CERVEZAS -->
+  <article class="menu-item">
+    <div class="menu-item-row">
+      <h4>Cerveza Lata</h4>
+      <span class="price">$3.500</span>
+    </div>
+    <p>Quilmes, Brahma o Andes.</p>
+  </article>
 
-      <div class="menu-panel" data-category="wine">
-        <article class="menu-item">
-          <div class="menu-item-row">
-            <h4>Vino Tinto</h4>
-            <span class="price">$28</span>
-          </div>
-          <p>Copa de vino seleccionado</p>
-        </article>
+  <article class="menu-item">
+    <div class="menu-item-row">
+      <h4>Cerveza 1 L</h4>
+      <span class="price">$6.000</span>
+    </div>
+    <p>Rubia bien fría para acompañar.</p>
+  </article>
 
-     <article class="menu-item">
-          <div class="menu-item-row">
-            <h4>Vino Tinto</h4>
-            <span class="price">$28</span>
-          </div>
-          <p>Copa de vino seleccionado</p>
-        </article>
+  <!-- SIN ALCOHOL -->
+  <article class="menu-item">
+    <div class="menu-item-row">
+      <h4>Agua Mineral</h4>
+      <span class="price">$1.800</span>
+    </div>
+    <p>Con o sin gas.</p>
+  </article>
 
+  <article class="menu-item">
+    <div class="menu-item-row">
+      <h4>Limonada</h4>
+      <span class="price">$2.800</span>
+    </div>
+    <p>Refrescante y natural.</p>
+  </article>
 
-     <article class="menu-item">
-          <div class="menu-item-row">
-            <h4>Vino Tinto</h4>
-            <span class="price">$28</span>
-          </div>
-          <p>Copa de vino seleccionado</p>
-        </article>
+</div>
 
-
-
-      </div>
 
     </div>
 
