@@ -197,12 +197,13 @@ window.addEventListener('scroll', () => {
    MENU CATEGORY – CLICK OUTSIDE (FIX)
 ========================= */
 
-document.addEventListener('click', (e) => {
-  const isCategory = e.target.closest('.menu-category');
-  const isCarousel = e.target.closest('.menu-carousel');
+document.querySelectorAll('.menu-category').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document
+      .querySelectorAll('.menu-category')
+      .forEach(b => b.classList.remove('active'));
 
-  // Si el click NO fue en una categoría ni dentro del carrusel
-  if (!isCategory && !isCarousel) {
-    menuButtons.forEach(btn => btn.classList.remove('active'));
-  }
+    btn.classList.add('active');
+  });
 });
+
