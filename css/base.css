@@ -439,8 +439,8 @@ body {
 }
 
 .menu-icon {
-  width: var(--menu-icon-size);
-  height: var(--menu-icon-size);
+  width: 70px;
+  height: 70px;
 
   display: flex;
   align-items: center;
@@ -770,12 +770,10 @@ body {
 
   background-color: #ffffff;
 
-  -webkit-mask-image: url("../assets/images/hero/bandeja.svg");
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
   -webkit-mask-size: contain;
 
-  mask-image: url("../assets/images/hero/bandeja.svg");
   mask-repeat: no-repeat;
   mask-position: center;
   mask-size: contain;
@@ -786,4 +784,13 @@ body {
 /* SOLO estado activo (click) */
 .menu-category.active .menu-icon-mask {
   background-color: #b32020;
+}
+.menu-icon-mask.ensalada {
+  -webkit-mask-image: url("../assets/images/hero/Salad.svg");
+  mask-image: url("../assets/images/hero/Salad.svg");
+}
+
+.menu-icon-mask.bandeja {
+  -webkit-mask-image: url("../assets/images/hero/bandeja.svg");
+  mask-image: url("../assets/images/hero/bandeja.svg");
 }
