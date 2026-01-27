@@ -227,3 +227,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 450);
   });
 });
+slider.addEventListener("mousedown", e => {
+  isDragging = true;
+  startX = e.clientX;
+  slider.style.transition = "none";
+
+  slider.classList.add("is-dragging"); // 👈 AÑADIR
+});
+window.addEventListener("mouseup", () => {
+  if (!isDragging) return;
+  isDragging = false;
+
+  slider.classList.remove("is-dragging"); // 👈 AÑADIR
+  handleSnap();
+});

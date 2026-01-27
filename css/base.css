@@ -392,13 +392,14 @@ body {
 }
 
 .menu-icon {
-  width: 70px;
-  height: 70px;
+  width: 200px;   /* antes 70 */
+  height: 200px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 
 .menu-icon img {
   width: 100%;
@@ -520,6 +521,9 @@ body {
   position: relative;
   width: 100%;
   overflow: visible; /* CLAVE */
+}
+#nosotros {
+  scroll-margin-top: 90px;
 }
 
 /* TRACK QUE SE MUEVE */
@@ -644,6 +648,33 @@ body {
 .menu-carousel-track:active {
   cursor: grabbing;
 }
+
+
+
+
+/* MOBILE MENU GRID */
+@media (max-width: 768px) {
+  .menu-carousel-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .menu-carousel-slide {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+    gap: 1rem;
+    min-width: 100%;
+    scroll-snap-align: start;
+  }
+
+  .menu-category {
+    width: 100%;
+  }
+}
+
 /* =========================
    MOBILE READABILITY BOOST
 ========================= */
@@ -1184,4 +1215,102 @@ body {
 #nosotros,
 #hero {
   scroll-margin-top: 90px; /* ajustable */
+}
+.menu-icon-mask.bandeja-servida {
+  -webkit-mask-image: url("../assets/images/hero/bandeja-servida.svg");
+  mask-image: url("../assets/images/hero/bandeja-servida.svg");
+}
+
+/* =========================
+   WHATSAPP HERO FIX
+========================= */
+
+.whatsapp-hero {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 3rem;
+  z-index: 9999;
+}
+
+/* BOTÓN */
+.Btn {
+  display: flex;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  background-color: #25D366;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: width 0.3s ease;
+}
+
+/* ICONO */
+.sign {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign svg {
+  width: 22px;
+  height: 22px;
+}
+
+.sign svg path {
+  fill: #fff;
+}
+
+/* TEXTO */
+.btn-text {
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  width: 0;
+  transition: all 0.3s ease;
+}
+
+/* HOVER (desktop) */
+@media (hover: hover) {
+  .Btn:hover {
+    width: 150px;
+  }
+
+  .Btn:hover .btn-text {
+    opacity: 1;
+    width: auto;
+    margin-right: 12px;
+  }
+}
+
+/* =========================
+   HERO DRAG CURSOR
+========================= */
+
+/* Estado normal */
+.hero-slider {
+  cursor: grab;
+}
+
+/* Mientras arrastra */
+.hero-slider.is-dragging {
+  cursor: grabbing;
+}
+.hero-icons--slide3 img {
+  width: 130px;          /* ajustá si querés */
+  height: auto;
+
+  /* lo convierte a rojo */
+  filter: brightness(0) saturate(100%)
+          invert(17%)
+          sepia(88%)
+          saturate(7486%)
+          hue-rotate(354deg)
+          brightness(92%)
+          contrast(115%);
 }
