@@ -974,14 +974,12 @@ body {
 
     z-index: 600;
   }
-
 .sidebar-inner {
   height: 100%;
   padding: 2.5rem 2rem;
 
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* ✅ */
 }
 
 
@@ -1093,8 +1091,9 @@ body {
   margin-bottom: 3rem;
 }
 .sidebar-footer {
-  margin-top: 12rem; /* ⬅️ SUBE o BAJA reservas */
+  margin-top: auto; /* 👈 ESTO LO EMPUJA ABAJO PERFECTO */
 }
+
 /* =========================
    HERO – DESKTOP SCALE UP
 ========================= */
