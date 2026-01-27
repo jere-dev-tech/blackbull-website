@@ -100,15 +100,21 @@
 >
 
     <a class="block mb-6 text-xl font-['Pirata_One'] tracking-widest">INICIO</a>
-    <a class="block mb-6 text-xl font-['Pirata_One'] tracking-widest">MENÚ</a>
-    <a class="block mb-6 text-xl font-['Pirata_One'] tracking-widest">NOSOTROS</a>
+<a href="#menu" class="block mb-6 text-xl font-['Pirata_One'] tracking-widest">
+  MENÚ
+</a>
+
+<a href="#nosotros" class="block mb-6 text-xl font-['Pirata_One'] tracking-widest">
+  NOSOTROS
+</a>
+
     <a class="block mb-6 text-xl font-['Pirata_One'] tracking-widest">CONTACTO</a>
     <a class="block mb-6 text-xl font-['Pirata_One'] tracking-widest">BLOG</a>
     
 
     <div class="mt-10 pt-6 border-t border-white/10">
       <span class="block text-xs tracking-[0.4em] text-gray-400 mb-2 uppercase">
-        Reservas
+        Reservas 
       </span>
 
       <a
@@ -208,7 +214,10 @@
   <div class="about-container">
 
 <div class="about-text">
-  <span class="about-eyebrow">COMIDAS AL PLATO · SANDWICHERÍA · PIZZAS</span>
+<span class="about-eyebrow">
+  COMIDAS AL PLATO <span class="sep">·</span> SANDWICHERÍA <span class="sep">·</span> PIZZAS
+</span>
+
 
 <h2 class="about-title">
   BIENVENIDOS A<br>
@@ -519,6 +528,7 @@
 </section>
 
 
+
 <script>
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener("click", e => {
@@ -544,6 +554,39 @@
   });
 </script>
 
+
+
+<script>
+  document.querySelectorAll('a[href="#menu"]').forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+
+      const menuSection = document.querySelector("#menu");
+      if (!menuSection) return;
+
+      const yOffset = -20; // pequeño margen superior
+      const y =
+        menuSection.getBoundingClientRect().top +
+        window.pageYOffset +
+        yOffset;
+
+      window.scrollTo({
+        top: y,
+        behavior: "smooth"
+      });
+    });
+  });
+</script>
+
+
+
+
+
+<script>
+  if (window.location.hash) {
+    history.replaceState(null, "", window.location.pathname);
+  }
+</script>
 
 
 <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>

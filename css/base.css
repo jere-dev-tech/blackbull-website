@@ -215,18 +215,25 @@ body {
 }
 
 .about-eyebrow {
-  display: block;
-  width: 100%;
-  max-width: 22ch;     /* CLAVE: controla el corte del texto */
-  margin: 0 auto 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6em;                 /* controla separación real */
 
-  text-align: center;
-  white-space: normal;
+  margin-bottom: 1.6rem;
 
-  font-size: clamp(0.65rem, 2.8vw, 0.85rem);
-  letter-spacing: 0.18em;
-  line-height: 1.6;
+  font-size: clamp(0.65rem, 2.5vw, 0.8rem);
+  letter-spacing: 0.28em;
+  line-height: 1.4;
+
   color: #b32020;
+  text-align: center;
+}
+
+/* Separadores */
+.about-eyebrow .sep {
+  opacity: 0.6;
 }
 
 
@@ -1165,4 +1172,16 @@ body {
     border-radius: 6px;
     object-fit: cover;
   }
+}
+/* Offset para scroll con navbar fijo */
+#menu,
+#nosotros,
+#hero {
+  scroll-margin-top: 90px; /* ajustable */
+}
+/* Offset para scroll con navbar fijo */
+#menu,
+#nosotros,
+#hero {
+  scroll-margin-top: 90px; /* ajustable */
 }
