@@ -917,3 +917,252 @@ body {
 .hero-btn.is-clicked::after {
   transform: translateX(0);
 }
+/* =========================
+   DESKTOP LAYOUT – SIDEBAR
+========================= */
+
+@media (min-width: 1024px) {
+
+  /* Sidebar */
+  .desktop-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+
+    background: #000;
+    border-right: 1px solid rgba(255,255,255,0.08);
+
+    z-index: 600;
+  }
+
+.sidebar-inner {
+  height: 100%;
+  padding: 2.5rem 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* ✅ */
+}
+
+
+  /* Logo */
+.sidebar-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 2.5rem;
+  margin-bottom: 3rem;
+   width: 210px;     /* ⬅️ tamaño ideal desktop */
+  
+}
+
+  /* Nav */
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    margin-top: 3rem;
+    
+  }
+
+  .sidebar-nav a {
+    font-family: 'Pirata One', cursive;
+    letter-spacing: 0.25em;
+    font-size: 0.85rem;
+    color: #fff;
+    opacity: 0.85;
+
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .sidebar-nav a:hover {
+    color: #b32020;
+    transform: translateX(6px);
+  }
+
+  /* Footer */
+  .sidebar-footer .label {
+    font-size: 1rem;
+    letter-spacing: 0.35em;
+    color: #777;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebar-footer a {
+    font-family: 'Pirata One', cursive;
+    font-size: 1.4rem;
+    letter-spacing: 0.15em;
+    color: #b32020;
+  }
+
+  /* =========================
+     CONTENIDO DESPLAZADO
+  ========================= */
+
+  body {
+    padding-left: 260px; /* CLAVE */
+  }
+
+  /* Ocultar mobile nav */
+  .mobile-nav {
+    display: none;
+  }
+}
+/* =========================
+   NAV VISIBILITY CONTROL
+========================= */
+
+/* Por defecto (MOBILE) */
+.desktop-sidebar {
+  display: none;
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .desktop-sidebar {
+    display: block;
+  }
+}
+
+.sidebar-nav a {
+  display: block;
+
+  font-family: 'Pirata One', cursive;
+  font-size: 1.35rem;        /* ⬅️ tamaño del texto */
+  letter-spacing: 0.25em;    /* look premium */
+  line-height: 1;
+
+  margin-bottom: 1.2rem;
+  color: #fff;
+  text-decoration: none;
+
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.sidebar-nav a:hover {
+  color: #b32020;
+  transform: translateX(6px);
+}
+.sidebar-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 2.5rem;
+  margin-bottom: 3rem;
+}
+.sidebar-footer {
+  margin-top: 12rem; /* ⬅️ SUBE o BAJA reservas */
+}
+/* =========================
+   HERO – DESKTOP SCALE UP
+========================= */
+
+@media (min-width: 1024px) {
+
+   .hero-content {
+    justify-content: center;   /* vertical */
+    align-items: center;       /* horizontal */
+    text-align: center;
+
+    padding: 0 4rem;           /* más aire lateral */
+  }
+
+  .hero-eyebrow {
+    font-size: 1.6rem;         /* ⬆️ más presencia */
+    letter-spacing: 0.35em;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-title {
+    font-size: 4.8rem;
+        /* ⬅️ acá nos soltamos */
+    letter-spacing: 0.22em;
+    line-height: 1.15;
+
+    margin: 1.5rem 0 2.2rem;
+  }
+
+  .hero-btn {
+    padding: 1.1rem 3.2rem;
+    font-size: 1.15rem;
+    letter-spacing: 0.35em;
+  }
+
+  .menu-icon--hero {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 2rem;
+    transform: translateY(-10px);
+  }
+}
+@media (min-width: 1024px) {
+
+  .about {
+    padding: 6rem 5rem;
+  }
+
+  .about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr; /* texto > imágenes */
+    gap: 5rem;
+
+    align-items: center;
+  }
+}
+@media (min-width: 1024px) {
+
+  .about-text {
+    text-align: left;
+  }
+
+  .about-eyebrow {
+    margin: 0 0 1.2rem;
+    max-width: none;
+
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+  }
+
+  .about-title {
+    text-align: left;
+    font-size: 3.2rem;
+    line-height: 1.1;
+
+    margin-bottom: 2rem;
+  }
+
+  .about-title span {
+    color: #b32020;
+  }
+
+  .about-text p {
+    text-align: left;
+    margin: 0 0 1.4rem;
+
+    font-size: 1rem;
+    line-height: 1.8;
+    max-width: 520px;
+  }
+}
+@media (min-width: 1024px) {
+
+  .about-images {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+  }
+
+  .about-images img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    object-fit: cover;
+  }
+}

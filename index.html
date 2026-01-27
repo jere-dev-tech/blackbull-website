@@ -18,6 +18,35 @@
 <body>
 
 
+<!-- DESKTOP SIDEBAR -->
+<aside class="desktop-sidebar">
+  <div class="sidebar-inner">
+
+    <!-- LOGO -->
+    <div class="sidebar-logo">
+      <img src="assets/images/hero/BLACKBULLLOGO.png" alt="Black Bull">
+    </div>
+
+    <!-- NAV -->
+    <nav class="sidebar-nav">
+      <a href="#">INICIO</a>
+      <a href="#menu">MENÚ</a>
+      <a href="#nosotros">NOSOTROS</a>
+
+      <a href="#">CONTACTO</a>
+       <a href="#">BLOG</a>
+    </nav>
+
+    <!-- RESERVA -->
+    <div class="sidebar-footer">
+      <span class="label">RESERVAS</span>
+      <a href="https://wa.me/5493835774444" target="_blank">
+        +54 383 577 4444
+      </a>
+    </div>
+
+  </div>
+</aside>
 
 
 
@@ -74,6 +103,8 @@
     <a class="block mb-6 text-xl font-['Pirata_One'] tracking-widest">MENÚ</a>
     <a class="block mb-6 text-xl font-['Pirata_One'] tracking-widest">NOSOTROS</a>
     <a class="block mb-6 text-xl font-['Pirata_One'] tracking-widest">CONTACTO</a>
+    <a class="block mb-6 text-xl font-['Pirata_One'] tracking-widest">BLOG</a>
+    
 
     <div class="mt-10 pt-6 border-t border-white/10">
       <span class="block text-xs tracking-[0.4em] text-gray-400 mb-2 uppercase">
@@ -172,7 +203,8 @@
 
 
 
-<section class="about">
+<section class="about" id="nosotros">
+
   <div class="about-container">
 
 <div class="about-text">
@@ -209,7 +241,7 @@
 
   </div>
 </section>
-
+            
 
 
 
@@ -218,11 +250,21 @@
   <div class="menu-inner">
 
     <!-- HEADER -->
-    <header class="menu-header">
-      <span class="menu-eyebrow">SABORES QUE REPRESENTAN</span>
-      <h2 class="menu-title">NUESTRO MENÚ</h2>
-    </header>
+<header class="menu-header flex flex-col items-center mb-16 px-4">
+  
+  <span class="text-sm md:text-base tracking-[0.6em] text-gray-300 uppercase font-light mb-3 text-center">
+    SABORES QUE NOS REPRESENTAN
+  </span>
 
+  <div class="relative inline-block">
+    <h2 class="text-6xl md:text-8xl font-['Pirata_One'] text-white uppercase leading-none tracking-wider">
+      NUESTRO MENÚ
+    </h2>
+    
+    <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-3/4 h-[3px] bg-gradient-to-r from-transparent via-[#b32020] to-transparent opacity-80"></div>
+  </div>
+
+</header>
     <!-- =========================
          CATEGORIES CAROUSEL
     ========================= -->
@@ -477,14 +519,30 @@
 </section>
 
 
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener("click", e => {
+      const targetId = link.getAttribute("href");
+      if (!targetId || targetId === "#") return;
 
+      const target = document.querySelector(targetId);
+      if (!target) return;
 
+      e.preventDefault();
 
+      const yOffset = -20; // margen superior
+      const y =
+        target.getBoundingClientRect().top +
+        window.pageYOffset +
+        yOffset;
 
-
-
-
-
+      window.scrollTo({
+        top: y,
+        behavior: "smooth"
+      });
+    });
+  });
+</script>
 
 
 
